@@ -1,0 +1,21 @@
+﻿@model Blog.Models.BlogViewModels.BlogViewModel
+
+@{ 
+    Layout = "_HomeLayout";
+    ViewData["HeaderImage"] = $"../../UserFiles/Blogs/{Model.Blog.Id}/HeaderImage.jpg";
+    ViewData["HeaderTitle"] = Model.Blog.Title;
+    ViewData["AuthorName"] = $"{Model.Blog.Creator.FirstName} {Model.Blog.Creator.LastName}";
+    ViewData["PostDate"] = Model.Blog.UpdatedOn.ToString("MMMM d, yyyy");
+    ViewData["AuthorId"] = Model.Blog.Creator.Id;
+}
+
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                @Html.Raw(Model.Blog.Content)
+            </div>
+        </div>
+    </div>
+</article>
